@@ -1,71 +1,69 @@
-import 'package:dart_notebook2/ui/page_1.dart';
-import 'package:dart_notebook2/ui/page_2.dart';
-import 'package:dart_notebook2/ui/page_3.dart';
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 
-
-void main() {
-  runApp(MyApp());
-}
+void main() => runApp(MyApp());
 
 class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: MyHomePage(title: 'Flutter Demo Home Page'),
+      home: MainPage(),
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  MyHomePage({Key? key, required this.title}) : super(key: key);
-  final String title;
-
+class MainPage extends StatefulWidget {
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _MainPageState createState() => _MainPageState();
 }
 
-class _MyHomePageState extends State<MyHomePage> {
-  late PageController _pageController;
-  int _selectedIndex = 0;
+class _MainPageState extends State<MainPage> {
 
-  // ボトムメニューの遷移先画面
-  var _pages = [
-    TestPage1(),
-    TestPage2(),
-    TestPage3(),
+  final _tab = <Tab> [  // タブバーの表示
+    Tab( text:"Railway", icon: Icon(Icons.directions_railway)),
+    Tab( text:"Subway", icon: Icon(Icons.directions_subway)),
+    Tab( text:"Walk", icon: Icon(Icons.directions_walk)),
   ];
-  @override
-  void initState() {
-    super.initState();
-    _pageController = PageController(initialPage: _selectedIndex);
-  }
 
-  @override
-  void dispose() {
-    super.dispose();
-    _pageController.dispose();
+  Widget build(BuildContext context) {
+    return DefaultTabController(  // タブを制御
+      length: _tab.length,  // タブの数
+      child: Scaffold(
+        appBar: AppBar(
+          title: const Text("KoheiSample"),
+          bottom: TabBar(  // タブバー
+            tabs: _tab,
+          ),
+        ),
+        body: TabBarView(  // 表示画面のウィジェット一覧を渡す
+            children: <Widget> [
+              TabPage(title: "Railway", icon: Icons.directions_railway),
+              TabPage(title: "Subway", icon: Icons.directions_subway),
+              TabPage(title: "Walk", icon: Icons.directions_walk),
+            ]
+        ),
+      ),
+    );
   }
+}
 
-  void _onPageChanged(int index) {
-    setState(() {
-      _selectedIndex = index;
-    });
-  }
+class TabPage extends StatelessWidget {
+
+  final IconData? icon;
+  final String? title;
+
+  const TabPage({Key? key, this.icon, this.title}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    //return LoginPage();
-
-    return Scaffold(
-        body: PageView(
-            controller: _pageController,
-            onPageChanged: _onPageChanged,
-            children: _pages));
+    final TextStyle? textStyle = Theme.of(context).textTheme.headline4;  // 文字のスタイル
+    return Center(
+      child:Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: <Widget>[
+          Icon(icon, size: 72.0, color: textStyle?.color),
+          Text(title!, style: textStyle),
+        ],
+      ),
+    );
   }
 }
