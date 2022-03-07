@@ -11,6 +11,8 @@ class MyApp extends StatelessWidget {
   }
 }
 
+
+
 class MainPage extends StatefulWidget {
   @override
   _MainPageState createState() => _MainPageState();
@@ -18,10 +20,31 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage> {
 
-  final _tab = <Tab> [  // タブバーの表示
-    Tab( text:"Railway", icon: Icon(Icons.directions_railway)),
-    Tab( text:"Subway", icon: Icon(Icons.directions_subway)),
-    Tab( text:"Walk", icon: Icon(Icons.directions_walk)),
+  final _tab = <Widget> [  // タブバーの表示
+    Container(
+      child: Row(
+        children: [
+          Icon(Icons.directions_railway),
+          Text('Railway'),
+        ],
+      ),
+    ),
+    Container(
+      child: Row(
+        children: [
+          Icon(Icons.directions_subway),
+          Text('Subway'),
+        ],
+      ),
+    ),
+    Container(
+      child: Row(
+        children: [
+          Icon(Icons.directions_walk),
+          Text('Walk'),
+        ],
+      ),
+    ),
   ];
 
   Widget build(BuildContext context) {

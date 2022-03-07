@@ -19,7 +19,11 @@ class MainPage extends StatefulWidget {
 class _MainPageState extends State<MainPage> {
 
   final _tab = <Tab> [  // タブバーの表示
-    Tab( text:"Railway", icon: Icon(Icons.directions_railway)),
+    Tab(
+        text:"Railway",
+        icon: Icon(Icons.directions_railway),
+
+    ),
     Tab( text:"Subway", icon: Icon(Icons.directions_subway)),
     Tab( text:"Walk", icon: Icon(Icons.directions_walk)),
   ];
