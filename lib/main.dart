@@ -47,6 +47,20 @@ class _MainPageState extends State<MainPage> {
     ),
   ];
 
+  // final _tab = <Widget> [  // タブバーの表示
+  //   Container(
+  //     child: Text('訪問済みのミュージアム'),
+  //   ),
+  //   Container(
+  //     child: Row(
+  //       children: [
+  //         Icon(Icons.arrow_circle_down),
+  //         Text('ダウンロード済みの音声'),
+  //       ],
+  //     ),
+  //   ),
+  // ];
+
   Widget build(BuildContext context) {
     return DefaultTabController(  // タブを制御
       length: _tab.length,  // タブの数
@@ -89,4 +103,5 @@ class TabPage extends StatelessWidget {
       ),
     );
   }
+
 }
