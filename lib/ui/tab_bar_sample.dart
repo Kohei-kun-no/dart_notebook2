@@ -11,6 +11,8 @@ class MyApp extends StatelessWidget {
   }
 }
 
+
+
 class MainPage extends StatefulWidget {
   @override
   _MainPageState createState() => _MainPageState();
@@ -18,15 +20,46 @@ class MainPage extends StatefulWidget {
 
 class _MainPageState extends State<MainPage> {
 
-  final _tab = <Tab> [  // タブバーの表示
-    Tab(
-        text:"Railway",
-        icon: Icon(Icons.directions_railway),
-
+  final _tab = <Widget> [  // タブバーの表示
+    Container(
+      child: Row(
+        children: [
+          Icon(Icons.directions_railway),
+          Text('Railway'),
+        ],
+      ),
     ),
-    Tab( text:"Subway", icon: Icon(Icons.directions_subway)),
-    Tab( text:"Walk", icon: Icon(Icons.directions_walk)),
+    Container(
+      child: Row(
+        children: [
+          Icon(Icons.directions_subway),
+          Text('Subway'),
+        ],
+      ),
+    ),
+    Container(
+      child: Row(
+        children: [
+          Icon(Icons.directions_walk),
+          Text('Walk'),
+        ],
+      ),
+    ),
   ];
+
+  // final _tab = <Widget> [  // タブバーの表示
+  //   Container(
+  //     child: Text('訪問済みのミュージアム'),
+  //   ),
+  //   Container(
+  //     child: Row(
+  //       children: [
+  //         Icon(Icons.arrow_circle_down),
+  //         Text('ダウンロード済みの音声'),
+  //       ],
+  //     ),
+  //   ),
+  // ];
 
   Widget build(BuildContext context) {
     return DefaultTabController(  // タブを制御
@@ -70,4 +103,5 @@ class TabPage extends StatelessWidget {
       ),
     );
   }
+
 }
