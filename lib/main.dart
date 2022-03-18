@@ -97,7 +97,7 @@ class TabPage extends StatelessWidget {
       child:Column(
         mainAxisAlignment: MainAxisAlignment.center,
         children: <Widget>[
-          Icon(icon, size: 72.0, color: textStyle?.color),
+          Icon(icon, size: 36.0, color: textStyle?.color),
           Text(title!, style: textStyle),
         ],
       ),
